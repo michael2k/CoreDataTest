@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CustomViewController.h
 //  CoreDataTest
 //
 //  Created by Myungsun Kim on 2015. 5. 14..
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface CustomViewController : UIViewController
 
 @end
-

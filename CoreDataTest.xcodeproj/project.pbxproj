@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		C30398871B0460C9003858AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398861B0460C9003858AE /* main.m */; };
 		C303988A1B0460C9003858AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398891B0460C9003858AE /* AppDelegate.m */; };
-		C303988D1B0460C9003858AE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C303988C1B0460C9003858AE /* ViewController.m */; };
 		C30398901B0460C9003858AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C303988E1B0460C9003858AE /* Main.storyboard */; };
 		C30398921B0460C9003858AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C30398911B0460C9003858AE /* Images.xcassets */; };
 		C30398951B0460C9003858AE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30398931B0460C9003858AE /* LaunchScreen.xib */; };
 		C30398A11B0460C9003858AE /* CoreDataTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398A01B0460C9003858AE /* CoreDataTestTests.m */; };
+		C30398AC1B046145003858AE /* PeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398AB1B046145003858AE /* PeopleTableViewController.m */; };
+		C30398AF1B046337003858AE /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398AE1B046336003858AE /* CustomViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,16 @@
 		C30398861B0460C9003858AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C30398881B0460C9003858AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C30398891B0460C9003858AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C303988B1B0460C9003858AE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C303988C1B0460C9003858AE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C303988F1B0460C9003858AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C30398911B0460C9003858AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C30398941B0460C9003858AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C303989A1B0460C9003858AE /* CoreDataTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C303989F1B0460C9003858AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C30398A01B0460C9003858AE /* CoreDataTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTestTests.m; sourceTree = "<group>"; };
+		C30398AA1B046145003858AE /* PeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTableViewController.h; sourceTree = "<group>"; };
+		C30398AB1B046145003858AE /* PeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTableViewController.m; sourceTree = "<group>"; };
+		C30398AD1B046336003858AE /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		C30398AE1B046336003858AE /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +86,11 @@
 			children = (
 				C30398881B0460C9003858AE /* AppDelegate.h */,
 				C30398891B0460C9003858AE /* AppDelegate.m */,
-				C303988B1B0460C9003858AE /* ViewController.h */,
-				C303988C1B0460C9003858AE /* ViewController.m */,
 				C303988E1B0460C9003858AE /* Main.storyboard */,
+				C30398AD1B046336003858AE /* CustomViewController.h */,
+				C30398AE1B046336003858AE /* CustomViewController.m */,
+				C30398AA1B046145003858AE /* PeopleTableViewController.h */,
+				C30398AB1B046145003858AE /* PeopleTableViewController.m */,
 				C30398911B0460C9003858AE /* Images.xcassets */,
 				C30398931B0460C9003858AE /* LaunchScreen.xib */,
 				C30398841B0460C9003858AE /* Supporting Files */,
@@ -219,8 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C303988D1B0460C9003858AE /* ViewController.m in Sources */,
+				C30398AF1B046337003858AE /* CustomViewController.m in Sources */,
 				C303988A1B0460C9003858AE /* AppDelegate.m in Sources */,
+				C30398AC1B046145003858AE /* PeopleTableViewController.m in Sources */,
 				C30398871B0460C9003858AE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
