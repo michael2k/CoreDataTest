@@ -15,6 +15,8 @@
 		C30398A11B0460C9003858AE /* CoreDataTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398A01B0460C9003858AE /* CoreDataTestTests.m */; };
 		C30398AC1B046145003858AE /* PeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398AB1B046145003858AE /* PeopleTableViewController.m */; };
 		C30398AF1B046337003858AE /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398AE1B046336003858AE /* CustomViewController.m */; };
+		C30398B21B046539003858AE /* CoreDataTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C30398B01B046539003858AE /* CoreDataTest.xcdatamodeld */; };
+		C30398B51B0465F4003858AE /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = C30398B41B0465F4003858AE /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,9 @@
 		C30398AB1B046145003858AE /* PeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTableViewController.m; sourceTree = "<group>"; };
 		C30398AD1B046336003858AE /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		C30398AE1B046336003858AE /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+		C30398B11B046539003858AE /* CoreDataTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataTest.xcdatamodel; sourceTree = "<group>"; };
+		C30398B31B0465F4003858AE /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		C30398B41B0465F4003858AE /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,9 @@
 		C30398831B0460C9003858AE /* CoreDataTest */ = {
 			isa = PBXGroup;
 			children = (
+				C30398B01B046539003858AE /* CoreDataTest.xcdatamodeld */,
+				C30398B31B0465F4003858AE /* Person.h */,
+				C30398B41B0465F4003858AE /* Person.m */,
 				C30398881B0460C9003858AE /* AppDelegate.h */,
 				C30398891B0460C9003858AE /* AppDelegate.m */,
 				C303988E1B0460C9003858AE /* Main.storyboard */,
@@ -224,10 +232,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30398B51B0465F4003858AE /* Person.m in Sources */,
 				C30398AF1B046337003858AE /* CustomViewController.m in Sources */,
 				C303988A1B0460C9003858AE /* AppDelegate.m in Sources */,
 				C30398AC1B046145003858AE /* PeopleTableViewController.m in Sources */,
 				C30398871B0460C9003858AE /* main.m in Sources */,
+				C30398B21B046539003858AE /* CoreDataTest.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +442,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C30398B01B046539003858AE /* CoreDataTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C30398B11B046539003858AE /* CoreDataTest.xcdatamodel */,
+			);
+			currentVersion = C30398B11B046539003858AE /* CoreDataTest.xcdatamodel */;
+			path = CoreDataTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C30398791B0460C9003858AE /* Project object */;
 }

@@ -9,6 +9,7 @@
 #import "CustomViewController.h"
 
 @interface CustomViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
 @end
 
@@ -17,6 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)save:(id)sender {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    // Create instance on NSManagedObject for Person
+    NSManagedObject *person = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:_managedObjectContext];
+    [person setValue:self.nameTextField.text forKey:@"name"];
+    
+    NSError *error;
+    // Here's where the actual save happens, and if it doesn't we print something out to console.
+    if (![_managedObjectContext save:&error]) {
+        NSLog(@"Problem saving: %@", [error localizedDescription]);
+    }
 }
 
 - (void)didReceiveMemoryWarning {
