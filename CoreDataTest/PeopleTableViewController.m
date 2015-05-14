@@ -48,6 +48,8 @@
     if (fetchedObjects != nil) {
         _people = [[NSMutableArray alloc]initWithArray:fetchedObjects];
     }
+    
+    [[self tableView] reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
