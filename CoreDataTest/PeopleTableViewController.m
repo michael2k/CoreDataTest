@@ -12,8 +12,9 @@
 
 @interface PeopleTableViewController ()
 
-@property (nonatomic, strong) NSMutableArray *people;
+//@property (nonatomic, strong) NSMutableArray *people;
 @property (nonatomic, strong) Person *person;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -21,22 +22,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [self fetchTheData];
+//    [self fetchTheData];
     NSLog(@"%s managedObjectContext = %@", __PRETTY_FUNCTION__, self.managedObjectContext);
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
 }
 
+/*
 - (void)viewWillAppear:(BOOL)animated {
-    [self fetchTheData];
+//    [self fetchTheData];
     NSLog(@"%s managedObjectContext = %@", __PRETTY_FUNCTION__, self.managedObjectContext);
 }
+*/
 
+/*
 - (void)fetchTheData {
     // Create fetch object, this object fetch's the objects out of the database.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -51,24 +52,27 @@
     
     [[self tableView] reloadData];
 }
+*/
 
+/*
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+*/
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return [[_fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [_people count];
+    return [[[_fetchedResultsController sections] objectAtIndex:section] numberOfObjects];
 }
 
 
@@ -76,10 +80,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    _person = [_people objectAtIndex:indexPath.row];
-    cell.textLabel.text = _person.name;
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    self.person = [_fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = self.person.name;
 }
 
 
@@ -116,6 +124,57 @@
     return YES;
 }
 */
+
+#pragma mark - fetchedResultsController
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController * theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+    _fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+    }
+}
+
 
 #pragma mark - Navigation
 
